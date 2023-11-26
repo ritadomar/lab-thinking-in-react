@@ -4,24 +4,38 @@ import ProductTable from './ProductTable';
 import SearchBar from './SearchBar';
 
 function ProductPage() {
-  console.log(document.getElementsByName('stock').value);
-  const [products, setProducts] = useState(productData);
+  const initialList = productData;
+  const [products, setProducts] = useState(initialList);
+  const [value, setValue] = useState('');
+  const [inStock, setInStock] = useState(false);
 
-  const searchFilter = () => {
-    const searchBar = document.getElementsById('search-bar');
-    if (searchBar.value.length > 0) {
-      const filteredProducts = [...products].filter((product) => {
-        if (product.name.includes(searchBar.value)) return true;
-        else return false;
-      });
-      setProducts(filteredProducts);
-    }
+  const updateValue = (e) => {
+    const newValue = e.target.value;
+    setValue(newValue);
+    searchFilter(newValue);
   };
+
+  const searchFilter = (value) => {
+    value = value.toLowerCase();
+    const filteredProducts = initialList.filter((product) =>
+      product.name.toLowerCase().includes(value)
+    );
+    setProducts(filteredProducts);
+  };
+
+  const showStock = (e) => setInStock(!inStock);
+
   return (
     <main>
-      <h1>IronStore</h1>
-      <SearchBar products={products} filter={searchFilter} />
-      <ProductTable products={products} />
+      <h1 id="page-name">IronStore</h1>
+      <SearchBar
+        products={products}
+        update={updateValue}
+        value={value}
+        inStock={inStock}
+        showStock={showStock}
+      />
+      <ProductTable products={products} inStock={inStock} />
     </main>
   );
 }

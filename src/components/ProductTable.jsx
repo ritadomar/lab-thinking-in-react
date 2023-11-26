@@ -1,7 +1,7 @@
 import ProductRow from './ProductRow';
 
 function ProductTable(props) {
-  const { products } = props;
+  const { products, inStock } = props;
   return (
     <section id="products">
       <table>
@@ -11,11 +11,21 @@ function ProductTable(props) {
             <th>Price</th>
           </tr>
         </thead>
-        <tbody>
-          {products.map((product) => (
-            <ProductRow key={product.id} product={product} />
-          ))}
-        </tbody>
+        {inStock ? (
+          <tbody>
+            {products
+              .filter((product) => product.inStock)
+              .map((product) => (
+                <ProductRow key={product.id} product={product} />
+              ))}
+          </tbody>
+        ) : (
+          <tbody>
+            {products.map((product) => (
+              <ProductRow key={product.id} product={product} />
+            ))}
+          </tbody>
+        )}
       </table>
     </section>
   );

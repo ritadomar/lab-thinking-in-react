@@ -1,17 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Manrope', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(215, 240, 244);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+* {
+  box-sizing: border-box;
 }
 
+main {
+  width: 50%;
+  margin: auto;
+}
+
+#page-name {
+  font-weight: 700;
+}
+
+#search h2 {
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+#search input[type='text'] {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  margin: 8px auto;
+  font-size: 20px;
+  border-radius: 8px;
+  border: 2px solid rgb(22, 183, 191);
+  font-family: Manrope, sans-serif;
+  font-weight: 500;
+}
+
+#search input[type='text']:focus {
+  outline: rgb(22, 183, 191) solid 1px;
+}
+
+#search input[type='text']::placeholder {
+  color: rgb(134, 204, 204);
+}
+
+#products {
+  margin-top: 24px;
+}
+
+#products table {
+  background-color: white;
+  width: 100%;
+  border-radius: 8px;
+}
+
+#products thead {
+  background-color: rgb(97, 168, 168);
+  border-radius: 8px;
+  /* border: none; */
+}
+
+#products tr {
+  border-radius: 8px;
+  height: 40px;
+}
+
+#products th {
+  /* border-radius: 8px; */
+}
 .red {
   color: red;
 }
